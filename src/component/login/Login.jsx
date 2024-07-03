@@ -5,7 +5,7 @@ import Apple from "../../images/apple.webp";
 import Google from "../../images/google.png";
 const Login = () => {
   return (
-    <div className="w-full flex">
+    <div className="w-full flex max-w-[1300px]">
       {/* Left Side */}
       <div className="w-[50%] h-screen relative">
         <div

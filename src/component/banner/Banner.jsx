@@ -4,16 +4,16 @@ import BannerImage from "../../images/banner-img.webp";
 
 const Banner = () => {
   return (
-    <div className="">
+    <div className="max-w-[1300px]">
       <video
-        className="w-full z-[0] absolute  h-screen object-cover "
+        className="w-full z-[0]  h-screen object-cover "
         src={BackgroundVideo}
         autoPlay
         muted
         loop
         playsInline
       ></video>
-      <div className="mx-auto  relative z-10">
+      <div className="mx-auto mt-[-45%] relative z-10">
         <div className="bg-center bg-no-repeat bg-cover h-screen w-full">
           <nav className="w-full flex  items-center">
             <div className="w-[65%] px-12 mt-7">
@@ -32,7 +32,7 @@ const Banner = () => {
               </div>
             </div>
           </nav>
-          <div className="flex  justify-center items-center text-primary">
+          <div className="flex mt-[3%] justify-center items-center text-primary">
             <div>
               <div className="  text-center relative ">
                 <div className="flex items-center justify-center mb-3 ">

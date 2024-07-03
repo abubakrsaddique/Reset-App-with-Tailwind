@@ -5,9 +5,9 @@ import Apple from "../../images/apple.webp";
 import Google from "../../images/google.png";
 const Signup = () => {
   return (
-    <div className="w-full flex">
+    <div className="w-full flex max-w-[1300px]">
       {/* Left Side */}
-      <div className="w-[50%] h-screen fixed">
+      <div className="w-[50%] h-screen">
         <div
           className="w-full h-full flex items-center justify-center flex-col bg-cover bg-center"
           style={{ backgroundImage: `url(${Image})` }}
@@ -32,7 +32,7 @@ const Signup = () => {
         </div>
       </div>
       {/* Right Side */}
-      <div className=" w-[50%] bg-blue flex items-center justify-center min-h-[100vh] relative ml-[50%] ">
+      <div className=" w-[50%] bg-blue flex items-center justify-center min-h-[100vh]  ">
         <div className="w-full max-w-[350px] mt-10">
           <h1 className="font-bold text-[40px]  text-primary leading-10 mb-2">
             Sign Up
