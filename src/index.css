@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.custom-border-text {
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+}
+
+.custom-border-text-login {
+  color: transparent;
+  -webkit-text-stroke: 1px white;
+}
