@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import AddButton from "../../images/7.webp";
 import Google from "../../images/google.png";
 import Apple from "../../images/apple.webp";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const { logout, isLoggedIn } = useContext(AuthContext);
+
+  const handleResetClick = () => {
+    if (isLoggedIn) {
+      navigate("/", { state: { isLoggedIn } });
+    } else {
+      navigate("/");
+    }
+  };
+
+  const handleLogoutClick = () => {
+    logout();
+    navigate("/");
+  };
   return (
-    <div className="bg-blue w-full min-h-screen relative max-w-[1300px]">
+    <div className="bg-blue w-full  relative max-w-[1300px]">
       {/* Nav-Bar */}
       <div className="flex items-center justify-between py-6 px-[10%]">
         <div>
@@ -17,7 +34,7 @@ const Dashboard = () => {
               viewBox="0 0 121 24"
               fill="none"
             >
-              <g clip-path="url(#clip0_8692_30318)">
+              <g clipPath="url(#clip0_8692_30318)">
                 <path
                   d="M14.1725 23.6665L9.18515 16.2001H5.16503V23.6665H0.046875V0.333984H10.683C13.4525 0.333984 15.6071 1.01154 17.1469 2.36665C18.6867 3.72175 19.4569 5.61147 19.4574 8.03579V8.10303C19.4574 9.99111 18.9977 11.5299 18.0781 12.7194C17.1586 13.9088 15.9565 14.7802 14.4717 15.3334L20.1597 23.6665H14.1725ZM14.2731 8.30064C14.2731 7.18933 13.9188 6.35598 13.2102 5.8006C12.5016 5.24522 11.515 4.96726 10.2505 4.96671H5.16503V11.6665H10.3486C11.6115 11.6665 12.5809 11.3659 13.2568 10.7646C13.9327 10.1633 14.2714 9.36302 14.2731 8.36377V8.30064Z"
                   fill="#FF7565"
@@ -62,7 +79,10 @@ const Dashboard = () => {
         </div>
         <div>
           <button>
-            <p className=" text-base  py-2 pr-3 text-primary  font-normal leading-6 tracking-[0.48px]">
+            <p
+              className=" text-base  py-2 pr-3 text-primary  font-normal leading-6 tracking-[0.48px]"
+              onClick={handleLogoutClick}
+            >
               Logout
             </p>
           </button>
@@ -136,187 +156,189 @@ const Dashboard = () => {
         </div>
       </div>
       {/* Account Section */}
-      <div className="flex justify-start lg:justify-start w-full mob:justify-center tab:justify-center">
-        <div className="mt-20 ml-[14%] lg:ml-16 mob:ml-4">
-          <div className="max-w-[450px] w-full min-w-[450px] mob:max-w-full mob:min-w-[350px]  ">
-            <div className="flex justify-between w-full">
-              <p className="text-xl font-bold leading-6 text-primary">
-                MyAccount
-              </p>
-              <div>
-                <button
-                  type="button"
-                  className="text-pink leading-6 font-semibold text-base"
-                >
-                  Edit
-                </button>
+      <div className="flex justify-center items-center mob:flex-col mob:pl-[20px] mob:pr-[30px]">
+        <div className="flex justify-start lg:justify-start w-full mob:justify-center tab:justify-center">
+          <div className="mt-20 ml-[14%] lg:ml-16 mob:ml-4">
+            <div className="max-w-[450px] w-full min-w-[450px] mob:max-w-full mob:min-w-[350px]  ">
+              <div className="flex justify-between w-full">
+                <p className="text-xl font-bold leading-6 text-primary">
+                  MyAccount
+                </p>
+                <div>
+                  <button
+                    type="button"
+                    className="text-pink leading-6 font-semibold text-base"
+                  >
+                    Edit
+                  </button>
+                </div>
+              </div>
+              <div className="bg-lightblue rounded-[24px] shrink-0 px-6 py-6 mt-6">
+                <div className="flex justify-between items-center w-full">
+                  <p className="text-sm font-semibold leading-5 text-primary">
+                    Email
+                  </p>
+                  <p className="text-sm text-lightgray font-semibold leading-5">
+                    trialmonth@gmail.com
+                  </p>
+                </div>
+                <hr className="h-px my-5 border-0 bg-lightgray" />
+                <div className="flex justify-between items-center w-full">
+                  <p className="text-sm font-semibold leading-5 text-primary">
+                    Password
+                  </p>
+                  <p className="text-sm font-semibold text-lightgray leading-5">
+                    ********
+                  </p>
+                </div>
               </div>
             </div>
-            <div className="bg-lightblue rounded-[24px] shrink-0 px-6 py-6 mt-6">
+            {/* My Profile */}
+            <div className="mt-6 pb-5">
               <div className="flex justify-between items-center w-full">
-                <p className="text-sm font-semibold leading-5 text-primary">
-                  Email
+                <p className="text-xl font-bold leading-6 text-primary">
+                  My Profile
                 </p>
-                <p className="text-sm text-lightgray font-semibold leading-5">
-                  trialmonth@gmail.com
-                </p>
+                <div>
+                  <button
+                    type="button"
+                    className="text-pink leading-6 font-semibold text-base"
+                  >
+                    Edit
+                  </button>
+                </div>
               </div>
-              <hr className="h-px my-5 border-0 bg-lightgray" />
-              <div className="flex justify-between items-center w-full">
-                <p className="text-sm font-semibold leading-5 text-primary">
-                  Password
-                </p>
-                <p className="text-sm font-semibold text-lightgray leading-5">
-                  ********
-                </p>
-              </div>
-            </div>
-          </div>
-          {/* My Profile */}
-          <div className="mt-6">
-            <div className="flex justify-between items-center w-full">
-              <p className="text-xl font-bold leading-6 text-primary">
-                My Profile
-              </p>
-              <div>
-                <button
-                  type="button"
-                  className="text-pink leading-6 font-semibold text-base"
-                >
-                  Edit
-                </button>
-              </div>
-            </div>
-            <div className="bg-lightblue rounded-[24px] shrink-0 px-6 py-6 mt-6">
-              <div className="flex flex-wrap items-center justify-between">
-                <p className="text-sm font-semibold leading-5 text-primary">
-                  Age
-                </p>
-                <p className="text-sm font-semibold text-lightgray leading-5">
-                  23
-                </p>
-              </div>
-              <hr className="h-px my-5 border-0 bg-lightgray" />
-              <div className="flex flex-wrap items-center justify-between">
-                <p className="text-sm font-semibold leading-5 text-primary">
-                  Height
-                </p>
-                <p className="text-sm font-semibold leading-5 text-lightgray">
-                  5ft 0in
-                </p>
-              </div>
-              <hr className="h-px my-5 border-0 bg-lightgray" />
-              <div className="flex flex-wrap items-center justify-between">
-                <p className="text-sm font-semibold leading-5 text-primary">
-                  Weight
-                </p>
-                <p className="text-sm font-semibold text-lightgray leading-5">
-                  70kg
-                </p>
-              </div>
-              <hr className="h-px my-5 border-0 bg-lightgray" />
-              <div className="flex flex-wrap items-center justify-between">
-                <p className="text-sm font-semibold leading-5 text-primary">
-                  Goal
-                </p>
-                <p className="text-sm font-semibold text-lightgray leading-5">
-                  Maintain Weight
-                </p>
-              </div>
-              <hr className="h-px my-5 border-0 bg-lightgray" />
-              <div className="flex flex-wrap items-center justify-between">
-                <p className="text-sm font-semibold leading-5 text-primary">
-                  Daily Meal Amount
-                </p>
-                <p className="text-sm font-semibold text-lightgray leading-5">
-                  6 meals
-                </p>
+              <div className="bg-lightblue rounded-[24px] shrink-0 px-6 py-6 mt-6">
+                <div className="flex flex-wrap items-center justify-between">
+                  <p className="text-sm font-semibold leading-5 text-primary">
+                    Age
+                  </p>
+                  <p className="text-sm font-semibold text-lightgray leading-5">
+                    23
+                  </p>
+                </div>
+                <hr className="h-px my-5 border-0 bg-lightgray" />
+                <div className="flex flex-wrap items-center justify-between">
+                  <p className="text-sm font-semibold leading-5 text-primary">
+                    Height
+                  </p>
+                  <p className="text-sm font-semibold leading-5 text-lightgray">
+                    5ft 0in
+                  </p>
+                </div>
+                <hr className="h-px my-5 border-0 bg-lightgray" />
+                <div className="flex flex-wrap items-center justify-between">
+                  <p className="text-sm font-semibold leading-5 text-primary">
+                    Weight
+                  </p>
+                  <p className="text-sm font-semibold text-lightgray leading-5">
+                    70kg
+                  </p>
+                </div>
+                <hr className="h-px my-5 border-0 bg-lightgray" />
+                <div className="flex flex-wrap items-center justify-between">
+                  <p className="text-sm font-semibold leading-5 text-primary">
+                    Goal
+                  </p>
+                  <p className="text-sm font-semibold text-lightgray leading-5">
+                    Maintain Weight
+                  </p>
+                </div>
+                <hr className="h-px my-5 border-0 bg-lightgray" />
+                <div className="flex flex-wrap items-center justify-between">
+                  <p className="text-sm font-semibold leading-5 text-primary">
+                    Daily Meal Amount
+                  </p>
+                  <p className="text-sm font-semibold text-lightgray leading-5">
+                    6 meals
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Left Side */}
-      <div className="flex justify-end lg:justify-end mob:justify-center tab:justify-center">
-        {/* Plan Section */}
-        <div className="mr-[10%] mt-[-45%] lg:mr-6  mob:-mr-2 mob:mt-4 tab:mt-4 tab:-mr-16">
-          <div className="max-w-[450px] w-full min-w-[450px] mob:max-w-full mob:min-w-[350px] ">
-            <div className="flex items-center justify-between">
-              <p className="text-xl font-bold leading-6 text-primary">
-                My Plan
-              </p>
-              <button
-                type="button"
-                className="text-pink leading-6 font-semibold text-base"
-              >
-                Edit
-              </button>
-            </div>
-            <div className="bg-lightblue rounded-[24px] shrink-0 px-6 py-6 mt-6">
-              <div className="flex justify-between items-center w-full">
-                <p className="text-sm font-semibold leading-5">
-                  <span className="text-lightgray">12 Month •</span>
-                  <span className="text-lightgray">Best deal</span>
-                  <br />
-                  <span className="text-xs font-medium text-lightgray">
-                    Term expires March 5, 2025
-                  </span>
+        {/* Left Side */}
+        <div className="flex justify-end lg:justify-end mob:justify-center tab:justify-center">
+          {/* Plan Section */}
+          <div className="mr-[40%] mb-[12%]  lg:mr-6  mob:-mr-2 mob:mt-4 tab:mt-4 tab:-mr-16">
+            <div className="max-w-[450px] w-full min-w-[450px] mob:max-w-full mob:min-w-[350px] ">
+              <div className="flex items-center justify-between">
+                <p className="text-xl font-bold leading-6 text-primary">
+                  My Plan
                 </p>
-                <p className="text-sm font-semibold leading-5 text-pink">
-                  $119.99
-                </p>
+                <button
+                  type="button"
+                  className="text-pink leading-6 font-semibold text-base"
+                >
+                  Edit
+                </button>
+              </div>
+              <div className="bg-lightblue rounded-[24px] shrink-0 px-6 py-6 mt-6">
+                <div className="flex justify-between items-center w-full">
+                  <p className="text-sm font-semibold leading-5">
+                    <span className="text-lightgray">12 Month •</span>
+                    <span className="text-lightgray">Best deal</span>
+                    <br />
+                    <span className="text-xs font-medium text-lightgray">
+                      Term expires March 5, 2025
+                    </span>
+                  </p>
+                  <p className="text-sm font-semibold leading-5 text-pink">
+                    $119.99
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          {/* Payment Method */}
-          <div className="mt-6">
-            <div className="flex items-center justify-between">
-              <p className="text-xl font-bold leading-6 text-primary">
-                My Payment Method
-              </p>
-              <button
-                type="button"
-                className="text-base leading-6 font-semibold text-pink"
-              >
-                Edit
-              </button>
-            </div>
-            <div className="bg-lightblue rounded-[24px] shrink-0 px-6 py-6 mt-6">
-              <div className="flex flex-wrap items-center justify-between">
-                <p className="text-sm font-semibold leading-5 text-primary">
-                  Payment Method
+            {/* Payment Method */}
+            <div className="mt-6">
+              <div className="flex items-center justify-between">
+                <p className="text-xl font-bold leading-6 text-primary">
+                  My Payment Method
                 </p>
-                <p className="text-sm font-semibold text-lightgray leading-5">
-                  Credit Card
-                </p>
+                <button
+                  type="button"
+                  className="text-base leading-6 font-semibold text-pink"
+                >
+                  Edit
+                </button>
               </div>
-              <hr className="h-px my-5 bg-gray-200 border-0 bg-lightgray" />
-              <div className="flex flex-wrap items-center justify-between">
-                <p className="text-sm font-semibold leading-5 text-primary">
-                  Number Card
-                </p>
-                <p className="text-sm font-semibold text-lightgray leading-5">
-                  •••• •••• •••• 1234
-                </p>
-              </div>
-              <hr className="h-px my-5 border-0 bg-lightgray" />
-              <div className="flex flex-wrap items-center justify-between">
-                <p className="text-sm font-semibold leading-5 text-primary">
-                  Expiry Date
-                </p>
-                <p className="text-sm font-semibold text-lightgray leading-5">
-                  01/2000
-                </p>
-              </div>
-              <hr className="h-px my-5 bg-lightgray border-0" />
-              <div className="flex flex-wrap items-center justify-between">
-                <p className="text-sm font-semibold text-primary leading-5">
-                  Email
-                </p>
-                <p className="text-sm font-semibold text-lightgray leading-5">
-                  trialmonth@gmail.com
-                </p>
+              <div className="bg-lightblue rounded-[24px] shrink-0 px-6 py-6 mt-6">
+                <div className="flex flex-wrap items-center justify-between">
+                  <p className="text-sm font-semibold leading-5 text-primary">
+                    Payment Method
+                  </p>
+                  <p className="text-sm font-semibold text-lightgray leading-5">
+                    Credit Card
+                  </p>
+                </div>
+                <hr className="h-px my-5 bg-gray-200 border-0 bg-lightgray" />
+                <div className="flex flex-wrap items-center justify-between">
+                  <p className="text-sm font-semibold leading-5 text-primary">
+                    Number Card
+                  </p>
+                  <p className="text-sm font-semibold text-lightgray leading-5">
+                    •••• •••• •••• 1234
+                  </p>
+                </div>
+                <hr className="h-px my-5 border-0 bg-lightgray" />
+                <div className="flex flex-wrap items-center justify-between">
+                  <p className="text-sm font-semibold leading-5 text-primary">
+                    Expiry Date
+                  </p>
+                  <p className="text-sm font-semibold text-lightgray leading-5">
+                    01/2000
+                  </p>
+                </div>
+                <hr className="h-px my-5 bg-lightgray border-0" />
+                <div className="flex flex-wrap items-center justify-between">
+                  <p className="text-sm font-semibold text-primary leading-5">
+                    Email
+                  </p>
+                  <p className="text-sm font-semibold text-lightgray leading-5">
+                    trialmonth@gmail.com
+                  </p>
+                </div>
               </div>
             </div>
           </div>

@@ -1,11 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import BackgroundVideo from "../../images/banner-video.mp4";
 import BannerImage from "../../images/banner-img.webp";
 import Close from "../../images/close.png";
+import { AuthContext } from "../../context/AuthContext";
 
 const Banner = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { isLoggedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state && location.state.fromDashboard) {
+      setIsModalOpen(true);
+    }
+  }, [location.state]);
+
+  const handleResetImageClick = () => {
+    if (isLoggedIn) {
+      navigate("/banner", { state: { fromDashboard: true } });
+    }
+  };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -15,10 +32,18 @@ const Banner = () => {
     setMenuOpen(false);
   };
 
+  const handleLoginClick = () => {
+    if (isLoggedIn) {
+      navigate("/dashboard");
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <div className="max-w-[1300px] relative">
       <video
-        className="w-full z-[0]  absolute min-h-screen object-cover"
+        className="w-full z-[0] absolute h-screen object-cover"
         src={BackgroundVideo}
         autoPlay
         muted
@@ -26,8 +51,8 @@ const Banner = () => {
         playsInline
       ></video>
       <div className="mx-auto relative z-10">
-        <div className="bg-center bg-no-repeat bg-cover h-screen w-full">
-          <nav className="w-full flex  items-center mob:hidden">
+        <div className="bg-center bg-no-repeat bg-cover min-h-screen w-full">
+          <nav className="w-full flex items-center mob:hidden">
             <div className="w-[65%] px-12 mt-7">
               <h3 className="text-primary font-xl font-medium">
                 Dark Mode Has Arrived
@@ -38,17 +63,20 @@ const Banner = () => {
                 <h3 className="text-primary font-xl font-medium">Support</h3>
               </div>
               <div>
-                <button className="text-primary bg-pink px-12 py-3 rounded-xl font-xl font-medium">
-                  Log In
+                <button
+                  className="text-primary bg-pink px-12 py-3 rounded-2xl font-xl font-medium"
+                  onClick={handleLoginClick}
+                >
+                  {isLoggedIn ? "Dashboard" : "Log In"}
                 </button>
               </div>
             </div>
           </nav>
           {/* Mobile */}
-          <nav className="w-full flex items-center px-4 py-6 ">
+          <nav className="w-full flex items-center px-4 py-6 z-20 relative">
             <div className="flex items-center w-full justify-end ml-96 mob:ml-52">
               <div
-                className="hidden cursor-pointe mob:block"
+                className="hidden cursor-pointer mob:block"
                 onClick={toggleMenu}
               >
                 {menuOpen ? (
@@ -60,26 +88,29 @@ const Banner = () => {
             </div>
           </nav>
           {menuOpen && (
-            <div className="hidden mob:block mt-[-80px] z-[-1] flex-col justify-center items-center absolute bg-blue py-[60px] rounded-b-3xl px-[124px] shadow-lg rounded-lg p-4">
-              <div className="mb-4" onClick={closeMenu}>
+            <div className="hidden mob:block mt-[-80px] z-[10] w-full flex-col justify-center items-center absolute bg-blue py-[60px] rounded-b-3xl pl-[108px] pr-[108px] shadow-lg rounded-lg">
+              <div className="mb-4 " onClick={closeMenu}>
                 <h3 className="text-primary font-xl font-medium">Support</h3>
               </div>
               <div onClick={closeMenu}>
-                <button className="text-primary bg-pink px-12 py-3 rounded-xl font-xl font-medium w-full">
-                  Log In
+                <button
+                  className="text-primary bg-pink px-12 py-3 rounded-xl font-xl font-medium w-full"
+                  onClick={handleLoginClick}
+                >
+                  {isLoggedIn ? "Dashboard" : "Log In"}
                 </button>
               </div>
             </div>
           )}
           {/* Main Headings */}
-          <div className="flex justify-center items-center mt-[-48px] tab:mt-[314px] mob:mt-[6%] text-primary">
+          <div className="flex justify-center items-center tab:mt-[314px] mob:mt-[6%] text-primary">
             <div>
               <div className="text-center relative">
                 <div className="flex items-center justify-center mb-8 mob:flex-col mob:mt-24">
                   <span className="text-9xl tab:text-8xl mob:text-7xl font-extrabold uppercase bg-clip-text custom-border-text">
                     FITNESS
                   </span>
-                  <div className="flex  items-center justify-center ml-4 text-9xl font-extrabold uppercase bg-clip-text custom-border-text tab:text-7xl mob:text-7xl">
+                  <div className="flex items-center justify-center ml-4 text-9xl font-extrabold uppercase bg-clip-text custom-border-text tab:text-7xl mob:text-7xl">
                     F
                     <div className="flex items-center justify-between">
                       <button
@@ -114,7 +145,7 @@ const Banner = () => {
                 </h1>
               </div>
               <div className="flex justify-center">
-                <button className="bg-pink font-medium py-5 rounded-2xl px-12 leading-[24px] overflow-hidden">
+                <button className="bg-pink font-medium py-3 rounded-2xl px-8 leading-[24px] overflow-hidden">
                   Start Your 7-Day Free Trial
                 </button>
               </div>

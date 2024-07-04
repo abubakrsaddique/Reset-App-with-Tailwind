@@ -11,3 +11,6 @@
   color: transparent;
   -webkit-text-stroke: 1px white;
 }
+.border-css:focus {
+  border: 2px solid gray;
+}
