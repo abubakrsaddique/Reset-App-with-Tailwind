@@ -7,7 +7,6 @@ import Dashboard from "./component/dashboard/Dashboard";
 import { AuthContext } from "./context/AuthContext";
 import PublicRoute from "../src/routes/PublicRoute";
 import PrivateRoute from "../src/routes/PrivateRoute";
-import AuthProvider from "./context/AuthContext";
 
 function App() {
   const { loading, user } = useContext(AuthContext);
