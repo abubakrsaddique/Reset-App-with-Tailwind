@@ -5,7 +5,7 @@ import Apple from "../../images/apple.webp";
 
 const Dashboard = () => {
   return (
-    <div className="bg-blue w-full max-h-fit relative max-w-[1300px]">
+    <div className="bg-blue w-full min-h-screen relative max-w-[1300px]">
       {/* Nav-Bar */}
       <div className="flex items-center justify-between py-6 px-[10%]">
         <div>
@@ -136,17 +136,17 @@ const Dashboard = () => {
         </div>
       </div>
       {/* Account Section */}
-      <div className="flex justify-start w-full">
-        <div className="mt-20 ml-[14%]">
-          <div className="max-w-[450px] w-full min-w-[450px] ">
-            <div className="flex justify-between  w-full">
-              <p className="text-xl font-bold  leading-6  text-primary">
+      <div className="flex justify-start lg:justify-start w-full mob:justify-center tab:justify-center">
+        <div className="mt-20 ml-[14%] lg:ml-16 mob:ml-4">
+          <div className="max-w-[450px] w-full min-w-[450px] mob:max-w-full mob:min-w-[350px]  ">
+            <div className="flex justify-between w-full">
+              <p className="text-xl font-bold leading-6 text-primary">
                 MyAccount
               </p>
               <div>
                 <button
                   type="button"
-                  className="text-pink leading-6 font-semibold  text-base"
+                  className="text-pink leading-6 font-semibold text-base"
                 >
                   Edit
                 </button>
@@ -157,30 +157,31 @@ const Dashboard = () => {
                 <p className="text-sm font-semibold leading-5 text-primary">
                   Email
                 </p>
-                <p className=" text-sm text-lightgray font-semibold  leading-5">
+                <p className="text-sm text-lightgray font-semibold leading-5">
                   trialmonth@gmail.com
                 </p>
               </div>
-              <hr className="h-px my-5  border-0 bg-lightgray" />
+              <hr className="h-px my-5 border-0 bg-lightgray" />
               <div className="flex justify-between items-center w-full">
-                <p className="text-sm font-semibold  leading-5 text-primary">
+                <p className="text-sm font-semibold leading-5 text-primary">
                   Password
                 </p>
-                <p className="text-sm font-semibold text-lightgray  leading-5">
+                <p className="text-sm font-semibold text-lightgray leading-5">
                   ********
                 </p>
               </div>
             </div>
           </div>
+          {/* My Profile */}
           <div className="mt-6">
             <div className="flex justify-between items-center w-full">
-              <p className="text-xl font-bold  leading-6 text-primary ">
+              <p className="text-xl font-bold leading-6 text-primary">
                 My Profile
               </p>
               <div>
                 <button
                   type="button"
-                  className="text-pink leading-6 font-semibold  text-base"
+                  className="text-pink leading-6 font-semibold text-base"
                 >
                   Edit
                 </button>
@@ -191,43 +192,43 @@ const Dashboard = () => {
                 <p className="text-sm font-semibold leading-5 text-primary">
                   Age
                 </p>
-                <p className=" text-sm font-semibold text-lightgray leading-5">
+                <p className="text-sm font-semibold text-lightgray leading-5">
                   23
                 </p>
               </div>
-              <hr className="h-px my-5  border-0 bg-lightgray" />
+              <hr className="h-px my-5 border-0 bg-lightgray" />
               <div className="flex flex-wrap items-center justify-between">
-                <p className="text-sm font-semibold  leading-5 text-primary">
+                <p className="text-sm font-semibold leading-5 text-primary">
                   Height
                 </p>
-                <p className=" text-sm font-semibold  leading-5 text-lightgray">
+                <p className="text-sm font-semibold leading-5 text-lightgray">
                   5ft 0in
                 </p>
               </div>
               <hr className="h-px my-5 border-0 bg-lightgray" />
               <div className="flex flex-wrap items-center justify-between">
-                <p className="text-sm font-semibold text-primary leading-5 ">
+                <p className="text-sm font-semibold leading-5 text-primary">
                   Weight
                 </p>
-                <p className=" text-sm font-semibold text-lightgray leading-5">
+                <p className="text-sm font-semibold text-lightgray leading-5">
                   70kg
                 </p>
               </div>
               <hr className="h-px my-5 border-0 bg-lightgray" />
               <div className="flex flex-wrap items-center justify-between">
-                <p className="text-sm font-semibold  leading-5 text-primary">
+                <p className="text-sm font-semibold leading-5 text-primary">
                   Goal
                 </p>
-                <p className=" text-sm font-semibold text-lightgray leading-5">
+                <p className="text-sm font-semibold text-lightgray leading-5">
                   Maintain Weight
                 </p>
               </div>
               <hr className="h-px my-5 border-0 bg-lightgray" />
               <div className="flex flex-wrap items-center justify-between">
-                <p className="text-sm font-semibold  leading-5 text-primary">
+                <p className="text-sm font-semibold leading-5 text-primary">
                   Daily Meal Amount
                 </p>
-                <p className=" text-sm font-semibold text-lightgray leading-5">
+                <p className="text-sm font-semibold text-lightgray leading-5">
                   6 meals
                 </p>
               </div>
@@ -235,33 +236,34 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
       {/* Left Side */}
-      <div className="flex justify-end ">
+      <div className="flex justify-end lg:justify-end mob:justify-center tab:justify-center">
         {/* Plan Section */}
-        <div className="mr-[10%] mt-[-45%]">
-          <div className="max-w-[450px] w-full min-w-[450px] ">
+        <div className="mr-[10%] mt-[-45%] lg:mr-6  mob:-mr-2 mob:mt-4 tab:mt-4 tab:-mr-16">
+          <div className="max-w-[450px] w-full min-w-[450px] mob:max-w-full mob:min-w-[350px] ">
             <div className="flex items-center justify-between">
-              <p className="text-xl font-bold  leading-6 text-primary">
+              <p className="text-xl font-bold leading-6 text-primary">
                 My Plan
               </p>
               <button
                 type="button"
-                className="text-pink leading-6 font-semibold  text-base"
+                className="text-pink leading-6 font-semibold text-base"
               >
                 Edit
               </button>
             </div>
             <div className="bg-lightblue rounded-[24px] shrink-0 px-6 py-6 mt-6">
               <div className="flex justify-between items-center w-full">
-                <p className=" text-sm font-semibold  leading-5 ">
-                  <span className="text-lightgray ">12 Month •</span>
+                <p className="text-sm font-semibold leading-5">
+                  <span className="text-lightgray">12 Month •</span>
                   <span className="text-lightgray">Best deal</span>
                   <br />
                   <span className="text-xs font-medium text-lightgray">
                     Term expires March 5, 2025
                   </span>
                 </p>
-                <p className="text-sm font-semibold  leading-5 text-pink">
+                <p className="text-sm font-semibold leading-5 text-pink">
                   $119.99
                 </p>
               </div>
@@ -270,49 +272,49 @@ const Dashboard = () => {
           {/* Payment Method */}
           <div className="mt-6">
             <div className="flex items-center justify-between">
-              <p className="text-xl font-bold leading-6  text-primary">
+              <p className="text-xl font-bold leading-6 text-primary">
                 My Payment Method
               </p>
               <button
                 type="button"
-                className=" text-base leading-6 font-semibold  text-pink"
+                className="text-base leading-6 font-semibold text-pink"
               >
                 Edit
               </button>
             </div>
             <div className="bg-lightblue rounded-[24px] shrink-0 px-6 py-6 mt-6">
               <div className="flex flex-wrap items-center justify-between">
-                <p className="text-sm font-semibold  leading-5 text-primary">
+                <p className="text-sm font-semibold leading-5 text-primary">
                   Payment Method
                 </p>
-                <p className=" text-sm font-semibold text-lightgray leading-5">
+                <p className="text-sm font-semibold text-lightgray leading-5">
                   Credit Card
                 </p>
               </div>
               <hr className="h-px my-5 bg-gray-200 border-0 bg-lightgray" />
               <div className="flex flex-wrap items-center justify-between">
-                <p className="text-sm font-semibold  leading-5 text-primary">
+                <p className="text-sm font-semibold leading-5 text-primary">
                   Number Card
                 </p>
-                <p className=" text-sm font-semibold text-lightgray leading-5">
+                <p className="text-sm font-semibold text-lightgray leading-5">
                   •••• •••• •••• 1234
                 </p>
               </div>
-              <hr className="h-px my-5  border-0 bg-lightgray" />
+              <hr className="h-px my-5 border-0 bg-lightgray" />
               <div className="flex flex-wrap items-center justify-between">
-                <p className="text-sm font-semibold  leading-5 text-primary">
+                <p className="text-sm font-semibold leading-5 text-primary">
                   Expiry Date
                 </p>
-                <p className=" text-sm font-semibold text-lightgray leading-5">
+                <p className="text-sm font-semibold text-lightgray leading-5">
                   01/2000
                 </p>
               </div>
-              <hr className="h-px my-5 bg-lightgray border-0 " />
+              <hr className="h-px my-5 bg-lightgray border-0" />
               <div className="flex flex-wrap items-center justify-between">
-                <p className="text-sm font-semibold text-primary leading-5 ">
+                <p className="text-sm font-semibold text-primary leading-5">
                   Email
                 </p>
-                <p className=" text-sm font-semibold text-lightgray leading-5">
+                <p className="text-sm font-semibold text-lightgray leading-5">
                   trialmonth@gmail.com
                 </p>
               </div>

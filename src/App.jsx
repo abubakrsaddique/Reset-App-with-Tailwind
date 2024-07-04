@@ -8,9 +8,9 @@ function App() {
   return (
     <div>
       <Banner />
-      {/* <Login /> */}
-      {/* <Signup /> */}
-      {/* <Dashboard /> */}
+      <Login />
+      <Signup />
+      <Dashboard />
     </div>
   );
 }

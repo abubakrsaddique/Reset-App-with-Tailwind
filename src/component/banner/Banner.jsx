@@ -18,7 +18,7 @@ const Banner = () => {
   return (
     <div className="max-w-[1300px] relative">
       <video
-        className="w-full z-[0]  absolute h-screen object-cover"
+        className="w-full z-[0]  absolute min-h-screen object-cover"
         src={BackgroundVideo}
         autoPlay
         muted
