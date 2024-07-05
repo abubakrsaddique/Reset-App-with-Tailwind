@@ -90,7 +90,7 @@ const Dashboard = () => {
           </div>
         </div>
         {/* ProfileSection */}
-        <div className="mx-auto max-w-[1300px]">
+        <div className="mx-auto max-w-[1300px] min-h-screen flex flex-col justify-center ">
           <div className="flex justify-center text-center">
             <div className="mt-[5%] text-center">
               <div className="flex justify-center">
