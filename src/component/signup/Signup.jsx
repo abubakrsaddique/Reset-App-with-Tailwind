@@ -5,6 +5,7 @@ import Apple from "../../images/apple.webp";
 import Google from "../../images/google.png";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { auth, firestore } from "../../Firebase";
+import { FaSpinner } from "react-icons/fa";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -12,9 +13,11 @@ const Signup = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSignup = async (event) => {
     event.preventDefault();
+    setLoading(true);
 
     try {
       const userCredential = await auth.createUserWithEmailAndPassword(
@@ -27,7 +30,7 @@ const Signup = () => {
         lastName,
         email,
       });
-
+      setLoading(false);
       navigate("/dashboard");
 
       setFirstName("");
@@ -36,6 +39,7 @@ const Signup = () => {
       setPassword("");
     } catch (error) {
       console.error("Error signing up:", error);
+      setLoading(false);
     }
   };
 
@@ -44,14 +48,14 @@ const Signup = () => {
   };
 
   return (
-    <div className="w-full flex max-w-[1300px] mob:flex-col">
+    <div className="w-full flex  mob:flex-col">
       {/* Left Side */}
       <div className="w-[50%]  tab:w-full mob:w-full   tab:h-[50vh] mob:h-[50vh]">
         <div
           className="w-full h-full flex items-center justify-center flex-col bg-cover bg-center "
           style={{ backgroundImage: `url(${Image})` }}
         >
-          <div className="flex flex-col justify-center items-center lg:mt-[-9%] mob:mt-[-20%]">
+          <div className="flex flex-col justify-center items-center mx-auto lg:mt-[-9%] mob:mt-[-20%]">
             <h3 className="text-primary text-4xl mob:text-3xl mob:font-semibold font-bold pt-6 bg-clip-text custom-border-text-login uppercase">
               Welcome To
             </h3>
@@ -66,12 +70,12 @@ const Signup = () => {
           </div>
         </div>
         {/* Bottom Images */}
-        <div className="flex flex-row w-80 -mt-12 ml-36 justify-center lg:ml-24 lg:-mt-32 tab:justify-center mob:-mt-12 mob:ml-8 mob:justify-center">
-          <div className="mr-5 -mt-11">
-            <img src={Apple} alt="" />
+        <div className=" flex-row  flex max-w-[1300px]  items-center justify-center  tab:justify-center  mob:justify-center">
+          <div className="mr-5 -mt-36 w-[20%]">
+            <img src={Apple} alt="" className="w-full" />
           </div>
-          <div className=" -mt-11">
-            <img src={Google} alt="" />
+          <div className=" -mt-36 w-[20%]">
+            <img src={Google} alt="" className="w-full" />
           </div>
         </div>
       </div>
@@ -133,8 +137,9 @@ const Signup = () => {
             <button
               className="bg-pink w-full mt-6 mb-4 max-h-[55px] py-4 text-primary font-bold leading-6 text-center rounded-[16px] flex justify-center items-center"
               type="submit"
+              disabled={loading}
             >
-              Sign Up
+              {loading ? <FaSpinner className="animate-spin" /> : "Get Started"}
             </button>
             <p className="text-[13px] font-medium uppercase text-lightgray ml-3 mb-4">
               secured checkout with 256-bit SSL encryption
